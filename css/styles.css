@@ -141,6 +141,9 @@ footer a {
     body{
         height: 100%;
     }
+.container {
+    margin-bottom: 1em;
+}
   .container > h1 {
     font-size: 2.5em;
     color: white;
@@ -175,6 +178,9 @@ footer a {
     body{
         height: 100%;
     }
+    .container {
+        margin-bottom: 2em;
+    }
   #results {
     font-size: 1.2em;
   }
@@ -189,18 +195,18 @@ footer a {
     body{
         height: 100%;
     }
+    .container {
+        margin-bottom: 2.5em;
+    }
   .container > h1 {
     font-size: 2em;
   }
   .container button {
     padding: 4px 8px;
     font-size: 1em;
-    margin-bottom: 5em;
-
   }
   #secondResult {
     font-size: 0.9em;
-    margin-bottom: 1em;
   }
   footer {
     margin-top: 7em;
