@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birthday Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <style>
+    body {
+      background-color: #f8f8f8;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 50px;
+    }
+
+    .form {
+      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    label {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    input[type="date"] {
+      width: 200px;
+      font-size: 18px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    button {
+      margin-top: 20px;
+      background-color: #4caf50;
+      color: #fff;
+      font-size: 18px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #3e8e41;
+    }
+
+    #results {
+      margin-top: 50px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <h1>Birthday Calculator</h1>
+      <div class="form">
+        <label for="birthdate">Enter Your Birthdate:</label>
+        <input type="date" id="birthdate" />
+        <button id="calculate">Calculate</button>
+      </div>
+      <div id="results"></div>
+    </div>
+    <script>
+          const calculateBtn = document.getElementById('calculate');
+
+      calculateBtn.addEventListener('click', () => {
+        const birthdate = document.getElementById('birthdate').value;
+        const today = new Date();
+        const birthday = new Date(birthdate);
+        const age = today.getFullYear() - birthday.getFullYear();
+        const monthDiff = today.getMonth() - birthday.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthday.getDate())) {
+          age--;
+        }
+        const nextBirthday = new Date(today.getFullYear(), birthday.getMonth(), birthday.getDate());
+        if (today > nextBirthday) {
+          nextBirthday.setFullYear(nextBirthday.getFullYear() + 1);
+        }
+        const daysUntilBirthday = Math.ceil((nextBirthday - today) / (1000 * 60 * 60 * 24));
+        const result = `You are ${age} years old. Your next birthday is on ${nextBirthday.toLocaleDateString()} which is in ${daysUntilBirthday} days.`;
+        document.getElementById('results').textContent = result;
+      });
+    </script>
+  </body>
+</html>
